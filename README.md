@@ -1,6 +1,12 @@
 # DeviceDetails
 
-A new flutter plugin project.
+A new flutter plugin project for the Native device essentials.
+
+* Device Info
+* Package Info
+* Telephony Info
+* Ip Info
+* Jaibreak/Root detection
 
 ## Getting Started
 
