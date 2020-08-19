@@ -1,1 +1,1 @@
-# fluuter_device_details
+# flutter_device_details
