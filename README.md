@@ -2,6 +2,8 @@
 
 A new flutter plugin project for the Native device essentials.
 
+### Currently Supporting only Android and iOS will be added soon
+
 * Device Info
 * Package Info
 * Telephony Info
