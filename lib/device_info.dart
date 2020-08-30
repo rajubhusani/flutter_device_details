@@ -28,7 +28,7 @@ class DeviceInfoPlugin {
   /// See: https://developer.apple.com/documentation/uikit/uidevice
   Future<IosDeviceInfo> get iosInfo async =>
       _cachedIosDeviceInfo ??= IosDeviceInfo._fromMap(
-          await channel.invokeMapMethod<String, dynamic>('getIosDeviceInfo'));
+          await channel.invokeMapMethod<String, dynamic>(describeEnum(METHODS.IOS_INFO)));
 }
 
 /// Information derived from `android.os.Build`.

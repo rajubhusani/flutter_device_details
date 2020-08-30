@@ -14,6 +14,7 @@ const MethodChannel channel = const MethodChannel('flutter_device_details');
 enum METHODS {
   PLATFORM_VERSION,
   ANDROID_INFO,
+  IOS_INFO,
   FROM_PLATFORM,
   IP_ADDRESS,
   IPV6_ADDRESS,
