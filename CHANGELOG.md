@@ -7,3 +7,9 @@
 * Telephony Info
 * Ip Info
 * Jaibreak/Root detection
+
+## 0.0.2
+
+### iOS platform support added
+
+* All the features that are added for Android the same updated for iOS.

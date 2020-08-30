@@ -2,7 +2,7 @@
 
 A new flutter plugin project for the Native device essentials.
 
-### Currently Supporting only Android and iOS will be added soon
+### Supported for both Android & iOS
 
 * Device Info
 * Package Info
