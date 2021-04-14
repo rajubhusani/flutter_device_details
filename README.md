@@ -1,4 +1,5 @@
 # DeviceDetails
+Version 0.0.2
 
 A new flutter plugin project for the Native device essentials.
 
