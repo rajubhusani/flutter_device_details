@@ -13,3 +13,7 @@
 ### iOS platform support added
 
 * All the features that are added for Android the same updated for iOS.
+
+## 1.0.0-nullsafety.0
+
+### Upgraded the library to Flutter 2.0 with Null safety
