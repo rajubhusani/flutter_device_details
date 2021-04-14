@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -40,28 +39,28 @@ class _MyAppState extends State<MyApp> {
 //      print(platformVersion);
       _ipAddress = await DeviceDetails.ipAddress;
       _ipv6Address = await DeviceDetails.ipv6Address;
-      _iosDeviceInfo =  _readIosDeviceInfo(await DeviceDetails.iosInfo);
+      // _iosDeviceInfo =  _readIosDeviceInfo(await DeviceDetails.iosInfo);
 
       _isRooted = await DeviceDetails.jailbroken;
 
-     _packageInfo = await DeviceDetails.fromPlatform;
-      _platformVetrsion =  await DeviceDetails.platformVersion;
-     _androidDeviceInfo = await DeviceDetails.androidInfo;
+      _packageInfo = await DeviceDetails.fromPlatform;
+      _platformVetrsion = await DeviceDetails.platformVersion;
+      _androidDeviceInfo = await DeviceDetails.androidInfo;
       _teleInfo = await DeviceDetails.telePhoneInfo;
 
       print('ip Address: $_ipAddress');
       print('ip6 Address: $_ipv6Address');
       print('Device Info: $_iosDeviceInfo');
 
-     print('Package Name:${ _packageInfo.packageName}');
-      print('Package appName:${ _packageInfo.appName}');
-      print('Package builNoName:${ _packageInfo.buildNumber}');
-      print('Package versionName:${ _packageInfo.version}');
+      print('Package Name:${_packageInfo.packageName}');
+      print('Package appName:${_packageInfo.appName}');
+      print('Package builNoName:${_packageInfo.buildNumber}');
+      print('Package versionName:${_packageInfo.version}');
 
       // print('Platform Version:${ _platformVetrsion}');
 
-     print('AndroidID:${ _androidDeviceInfo.androidId}');
-      print('Network Operator:${ _teleInfo.simCarrierIdName}');
+      print('AndroidID:${_androidDeviceInfo.androidId}');
+      print('Network Operator:${_teleInfo.simCarrierIdName}');
       print('Is Rooted Device: $_isRooted');
     } on PlatformException {
       platformVersion = 'Platform Exception.';

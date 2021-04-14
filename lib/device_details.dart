@@ -16,14 +16,12 @@ class DeviceDetails {
 
   static Future<IosDeviceInfo> get iosInfo async => _deviceInfoPlugin.iosInfo;
 
-  static Future<PackageInfo> get fromPlatform async =>
+  static Future<PackageInfo?> get fromPlatform async =>
       PackageInfo.fromPlatform();
 
   static Future<String> get ipAddress async => GetIp.ipAddress;
 
   static Future<String> get ipv6Address async => GetIp.ipv6Address;
-
-
 
   static Future<TelephonyInfo> get telePhoneInfo => FltTelephonyInfo.info;
 

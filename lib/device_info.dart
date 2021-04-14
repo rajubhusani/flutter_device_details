@@ -10,7 +10,7 @@ class DeviceInfoPlugin {
   DeviceInfoPlugin();
 
   /// This information does not change from call to call. Cache it.
-  AndroidDeviceInfo _cachedAndroidDeviceInfo;
+  AndroidDeviceInfo? _cachedAndroidDeviceInfo;
 
   /// Information derived from `android.os.Build`.
   ///
@@ -21,14 +21,14 @@ class DeviceInfoPlugin {
               describeEnum(METHODS.ANDROID_INFO)));
 
   /// This information does not change from call to call. Cache it.
-  IosDeviceInfo _cachedIosDeviceInfo;
+  IosDeviceInfo? _cachedIosDeviceInfo;
 
   /// Information derived from `UIDevice`.
   ///
   /// See: https://developer.apple.com/documentation/uikit/uidevice
   Future<IosDeviceInfo> get iosInfo async =>
-      _cachedIosDeviceInfo ??= IosDeviceInfo._fromMap(
-          await channel.invokeMapMethod<String, dynamic>(describeEnum(METHODS.IOS_INFO)));
+      _cachedIosDeviceInfo ??= IosDeviceInfo._fromMap(await channel
+          .invokeMapMethod<String, dynamic>(describeEnum(METHODS.IOS_INFO)));
 }
 
 /// Information derived from `android.os.Build`.
@@ -53,59 +53,58 @@ class AndroidDeviceInfo {
     this.type,
     this.isPhysicalDevice,
     this.androidId,
-    List<String> systemFeatures,
   });
 
   /// Android operating system version values derived from `android.os.Build.VERSION`.
-  final AndroidBuildVersion version;
+  final AndroidBuildVersion? version;
 
   /// The name of the underlying board, like "goldfish".
-  final String board;
+  final String? board;
 
   /// The system bootloader version number.
-  final String bootloader;
+  final String? bootloader;
 
   /// The consumer-visible brand with which the product/hardware will be associated, if any.
-  final String brand;
+  final String? brand;
 
   /// The name of the industrial design.
-  final String device;
+  final String? device;
 
   /// A build ID string meant for displaying to the user.
-  final String display;
+  final String? display;
 
   /// A string that uniquely identifies this build.
-  final String fingerprint;
+  final String? fingerprint;
 
   /// The name of the hardware (from the kernel command line or /proc).
-  final String hardware;
+  final String? hardware;
 
   /// Hostname.
-  final String host;
+  final String? host;
 
   /// Either a changelist number, or a label like "M4-rc20".
-  final String id;
+  final String? id;
 
   /// The manufacturer of the product/hardware.
-  final String manufacturer;
+  final String? manufacturer;
 
   /// The end-user-visible name for the end product.
-  final String model;
+  final String? model;
 
   /// The name of the overall product.
-  final String product;
+  final String? product;
 
   /// Comma-separated tags describing the build, like "unsigned,debug".
-  final String tags;
+  final String? tags;
 
   /// The type of build, like "user" or "eng".
-  final String type;
+  final String? type;
 
   /// `false` if the application is running in an emulator, `true` otherwise.
-  final bool isPhysicalDevice;
+  final bool? isPhysicalDevice;
 
   /// The Android hardware device ID that is unique between the device + user and app signing.
-  final String androidId;
+  final String? androidId;
 
   /// Describes what features are available on the current device.
   ///
@@ -123,26 +122,26 @@ class AndroidDeviceInfo {
   /// https://developer.android.com/reference/android/content/pm/PackageManager
 
   /// Deserializes from the message received from [_kChannel].
-  static AndroidDeviceInfo _fromMap(Map<String, dynamic> map) {
+  static AndroidDeviceInfo _fromMap(Map<String, dynamic>? map) {
     return AndroidDeviceInfo._(
-      version:
-          AndroidBuildVersion._fromMap(map['version']?.cast<String, dynamic>()),
-      board: map['board'],
-      bootloader: map['bootloader'],
-      brand: map['brand'],
-      device: map['device'],
-      display: map['display'],
-      fingerprint: map['fingerprint'],
-      hardware: map['hardware'],
-      host: map['host'],
-      id: map['id'],
-      manufacturer: map['manufacturer'],
-      model: map['model'],
-      product: map['product'],
-      tags: map['tags'],
-      type: map['type'],
-      isPhysicalDevice: map['isPhysicalDevice'],
-      androidId: map['androidId'],
+      version: AndroidBuildVersion._fromMap(
+          map?['version']?.cast<String, dynamic>()),
+      board: map?['board'],
+      bootloader: map?['bootloader'],
+      brand: map?['brand'],
+      device: map?['device'],
+      display: map?['display'],
+      fingerprint: map?['fingerprint'],
+      hardware: map?['hardware'],
+      host: map?['host'],
+      id: map?['id'],
+      manufacturer: map?['manufacturer'],
+      model: map?['model'],
+      product: map?['product'],
+      tags: map?['tags'],
+      type: map?['type'],
+      isPhysicalDevice: map?['isPhysicalDevice'],
+      androidId: map?['androidId'],
     );
   }
 
@@ -169,27 +168,27 @@ class AndroidBuildVersion {
   });
 
   /// The base OS build the product is based on.
-  final String baseOS;
+  final String? baseOS;
 
   /// The current development codename, or the string "REL" if this is a release build.
-  final String codename;
+  final String? codename;
 
   /// The internal value used by the underlying source control to represent this build.
-  final String incremental;
+  final String? incremental;
 
   /// The developer preview revision of a prerelease SDK.
-  final int previewSdkInt;
+  final int? previewSdkInt;
 
-  /// The user-visible version string.
-  final String release;
+  /// The user-visible version String.
+  final String? release;
 
   /// The user-visible SDK version of the framework.
   ///
   /// Possible values are defined in: https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
-  final int sdkInt;
+  final int? sdkInt;
 
   /// The user-visible security patch level.
-  final String securityPatch;
+  final String? securityPatch;
 
   /// Deserializes from the map message received from [_kChannel].
   static AndroidBuildVersion _fromMap(Map<String, dynamic> map) {
@@ -221,40 +220,40 @@ class IosDeviceInfo {
   });
 
   /// Device name.
-  final String name;
+  final String? name;
 
   /// The name of the current operating system.
-  final String systemName;
+  final String? systemName;
 
   /// The current operating system version.
-  final String systemVersion;
+  final String? systemVersion;
 
   /// Device model.
-  final String model;
+  final String? model;
 
   /// Localized name of the device model.
-  final String localizedModel;
+  final String? localizedModel;
 
   /// Unique UUID value identifying the current device.
-  final String identifierForVendor;
+  final String? identifierForVendor;
 
   /// `false` if the application is running in a simulator, `true` otherwise.
-  final bool isPhysicalDevice;
+  final bool? isPhysicalDevice;
 
   /// Operating system information derived from `sys/utsname.h`.
-  final IosUtsname utsname;
+  final IosUtsname? utsname;
 
   /// Deserializes from the map message received from [_kChannel].
-  static IosDeviceInfo _fromMap(Map<String, dynamic> map) {
+  static IosDeviceInfo _fromMap(Map<String, dynamic>? map) {
     return IosDeviceInfo._(
-      name: map['name'],
-      systemName: map['systemName'],
-      systemVersion: map['systemVersion'],
-      model: map['model'],
-      localizedModel: map['localizedModel'],
-      identifierForVendor: map['identifierForVendor'],
-      isPhysicalDevice: map['isPhysicalDevice'] == 'true',
-      utsname: IosUtsname._fromMap(map['utsname']?.cast<String, dynamic>()),
+      name: map?['name'],
+      systemName: map?['systemName'],
+      systemVersion: map?['systemVersion'],
+      model: map?['model'],
+      localizedModel: map?['localizedModel'],
+      identifierForVendor: map?['identifierForVendor'],
+      isPhysicalDevice: map?['isPhysicalDevice'] == 'true',
+      utsname: IosUtsname._fromMap(map?['utsname']?.cast<String, dynamic>()),
     );
   }
 }
@@ -271,19 +270,19 @@ class IosUtsname {
   });
 
   /// Operating system name.
-  final String sysname;
+  final String? sysname;
 
   /// Network node name.
-  final String nodename;
+  final String? nodename;
 
   /// Release level.
-  final String release;
+  final String? release;
 
   /// Version level.
-  final String version;
+  final String? version;
 
   /// Hardware type (e.g. 'iPhone7,1' for iPhone 6 Plus).
-  final String machine;
+  final String? machine;
 
   /// Deserializes from the map message received from [_kChannel].
   static IosUtsname _fromMap(Map<String, dynamic> map) {
